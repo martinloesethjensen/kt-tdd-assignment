@@ -1,8 +1,13 @@
+import org.amshove.kluent.`should be equal to`
 import org.amshove.kluent.`should be`
 import org.amshove.kluent.`should throw`
 import org.amshove.kluent.invoking
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 
 class FormulaOneCarTest {
     private val ferrari = FormulaOneCar()
@@ -55,5 +60,17 @@ class FormulaOneCarTest {
         fun `should throw exception if car have not been lifted before the installation of the tyres`() {
             invoking { ferrari.installTyres() } `should throw` TyreException::class
         }
+    }
+
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+    @Nested
+    inner class `tyre count` {
+        @ParameterizedTest
+        @MethodSource("tyreCountBoundaries")
+        fun `should not be lower or higher than 4`(tyreCount: Int){
+        }
+
+        @Suppress("unused")
+        fun tyreCountBoundaries() = listOf(3,4,5)
     }
 }
