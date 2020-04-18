@@ -64,8 +64,8 @@ class FormulaOneCarTest {
     inner class `tyre count` {
         @ParameterizedTest
         @MethodSource("tyreCountInvalidBoundaries")
-        fun `should not be lower or higher than 4`(tyreCount: Int){
-            ferrari.tyreCount() `should not be` tyreCount
+        fun `should not be lower or higher than 4`(count: Int){
+            ferrari.tyreCount() `should not be` count
         }
 
         @Suppress("unused")
