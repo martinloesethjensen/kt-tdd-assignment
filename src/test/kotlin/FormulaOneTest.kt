@@ -39,6 +39,7 @@ class FormulaOneCarTest {
         @Test
         fun `should install all tyres`() {
             ferrari.toggleLiftedState()
+            ferrari.toggleTyreRemovalState()
             ferrari.installTyres()
             ferrari.tyreCount() `should be` 4
         }
