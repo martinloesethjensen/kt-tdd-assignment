@@ -14,7 +14,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     testImplementation(group = "org.junit.jupiter", name = "junit-jupiter", version = "5.5.0")
-    testImplementation("org.amshove.kluent:kluent:1.4")
+    testImplementation("org.amshove.kluent:kluent:1.60")
     testImplementation("io.mockk:mockk:1.9.3")
 }
 

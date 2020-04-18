@@ -1,16 +1,17 @@
 class FormulaOneCar {
-    var isLifted = false
-    var isTyresRemoved = false
-    var tyreCount = 4
+    private var isLifted = false
+    private var isTyresRemoved = false
+    private var tyreCount = 4
 
     fun removeAllTyres() {
         if(!isLifted) {
-            return
+            throw TyreException("Car should be lifted before tyre removal")
         }
 
         if(isTyresRemoved) {
-            return
+            throw TyreException("Tyres have already been removed")
         }
+
         tyreCount = 0
     }
 
@@ -18,12 +19,18 @@ class FormulaOneCar {
         isLifted = !isLifted
     }
 
-    fun replaceAllTyres() {
+    fun tyreCount() = tyreCount
+
+    fun toggleTyreRemovalState() {
+        isTyresRemoved = ! isTyresRemoved
+    }
+
+    fun installTyres() {
         if(!isLifted) {
-            return
+            throw TyreException("Car should be lifted before installation of tyres")
         }
         if(!isTyresRemoved) {
-            return
+            throw TyreException("Old tyres need to be removed before the installation of new tyres")
         }
         tyreCount = 4
     }
