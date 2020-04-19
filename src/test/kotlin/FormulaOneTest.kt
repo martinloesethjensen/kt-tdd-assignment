@@ -9,66 +9,66 @@ class FormulaOneCarTest {
     private val ferrari = FormulaOneCar()
 
     @Nested
-    inner class `tyre removal` {
+    inner class `tire removal` {
 
         @Test
-        fun `should remove all tyres`() {
+        fun `should remove all tires`() {
             ferrari.toggleLiftedState()
-            ferrari.removeAllTyres()
-            ferrari.tyreCount() `should be` 0
+            ferrari.removeAllTires()
+            ferrari.tireCount() `should be` 0
         }
 
         @Test
-        fun `should throw exception if tyres have not been removed`() {
+        fun `should throw exception if tires have not been removed`() {
             // given
-            ferrari.toggleTyreRemovalState()
+            ferrari.toggleTireRemovalState()
             ferrari.toggleLiftedState()
 
             // then
-            invoking { ferrari.removeAllTyres() } `should throw` TyreException::class
+            invoking { ferrari.removeAllTires() } `should throw` TireException::class
         }
 
         @Test
-        fun `should throw exception if car have not been lifted before the removal of the tyres`() {
-            invoking { ferrari.removeAllTyres() } `should throw` TyreException::class
+        fun `should throw exception if car have not been lifted before the removal of the tires`() {
+            invoking { ferrari.removeAllTires() } `should throw` TireException::class
         }
     }
 
     @Nested
-    inner class `tyre installation` {
+    inner class `tire installation` {
         @Test
-        fun `should install all tyres`() {
+        fun `should install all tires`() {
             ferrari.toggleLiftedState()
-            ferrari.toggleTyreRemovalState()
-            ferrari.installTyres()
-            ferrari.tyreCount() `should be` 4
+            ferrari.toggleTireRemovalState()
+            ferrari.installTires()
+            ferrari.tireCount() `should be` 4
         }
 
         @Test
-        fun `should throw exception if tyres have not been removed`() {
+        fun `should throw exception if tires have not been removed`() {
             // given
             ferrari.toggleLiftedState()
 
             // then
-            invoking { ferrari.installTyres() } `should throw` TyreException::class
+            invoking { ferrari.installTires() } `should throw` TireException::class
         }
 
         @Test
-        fun `should throw exception if car have not been lifted before the installation of the tyres`() {
-            invoking { ferrari.installTyres() } `should throw` TyreException::class
+        fun `should throw exception if car have not been lifted before the installation of the tires`() {
+            invoking { ferrari.installTires() } `should throw` TireException::class
         }
     }
 
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     @Nested
-    inner class `tyre count` {
+    inner class `tire count` {
         @ParameterizedTest
-        @MethodSource("tyreCountInvalidBoundaries")
+        @MethodSource("tireCountInvalidBoundaries")
         fun `should not be lower or higher than 4`(count: Int){
-            ferrari.tyreCount() `should not be` count
+            ferrari.tireCount() `should not be` count
         }
 
         @Suppress("unused")
-        fun tyreCountInvalidBoundaries() = listOf(0,1,2,3,5,6)
+        fun tireCountInvalidBoundaries() = listOf(0,1,2,3,5,6)
     }
 }

@@ -1,1 +1,1 @@
-class TyreException(message: String) : Throwable(message)
+class TireException(message: String) : Throwable(message)
