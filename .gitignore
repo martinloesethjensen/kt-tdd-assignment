@@ -3,6 +3,10 @@
 # Compiled class file
 *.class
 
+local.properties
+*/.DS_STORE
+.DS_STORE
+
 # Log file
 *.log
 
